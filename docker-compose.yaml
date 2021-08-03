@@ -1,0 +1,16 @@
+# local run: docker-compose --env-file .env.dev up
+
+services:
+  frontend-vue:
+    container_name: frontend-vue
+    build:
+        context: .
+    restart: unless-stopped
+    networks:
+      - db
+    ports:
+      - 10001:8080
+
+networks:
+  db:
+    external: true
